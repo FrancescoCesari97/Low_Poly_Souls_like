@@ -10,10 +10,17 @@ public class PlayerInputManager : MonoBehaviour
 
     PlayerControls playerControls;
 
+    [Header("Player Movement Input")]
     [SerializeField] Vector2 movementInput;
     public float verticalInput;
     public float horizontalInput;
     public float moveAmount;
+
+    [Header("Camera movement Input")]
+    [SerializeField] Vector2 cameraInput;
+    public float cameraVerticalInput;
+    public float cameraHorizontalInput;
+    public float cameraMoveAmount;
 
     private void Awake()
     {
@@ -61,6 +68,7 @@ public class PlayerInputManager : MonoBehaviour
             playerControls = new PlayerControls();
 
             playerControls.PlayerMovement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
+            playerControls.PlayerCamera.Movement.performed += i => cameraInput = i.ReadValue<Vector2>();
         }
 
         playerControls.Enable();
@@ -91,10 +99,11 @@ public class PlayerInputManager : MonoBehaviour
 
     private void Update()
     {
-        HandleMovementInput();
+        HandlePlayerMovementInput();
+        HandleCameraMovementInput();
     }
 
-    private void HandleMovementInput() 
+    private void HandlePlayerMovementInput() 
     {
         verticalInput = movementInput.y;
         horizontalInput = movementInput.x;
@@ -110,6 +119,25 @@ public class PlayerInputManager : MonoBehaviour
         else if (moveAmount > 0.5 && moveAmount <= 1)
         {
             moveAmount = 1; 
+        }
+    }
+
+    private void HandleCameraMovementInput()
+    {
+        cameraVerticalInput = cameraInput.y;
+        cameraHorizontalInput = cameraInput.x;
+
+        // Return the absolute number
+        moveAmount = Mathf.Clamp01(Mathf.Abs(verticalInput) + Mathf.Abs(horizontalInput));
+
+        // Clamp the value to 0, 0.5, 1
+        if (moveAmount <= 0.5 && moveAmount > 0)
+        {
+            moveAmount = 0.5f;
+        }
+        else if (moveAmount > 0.5 && moveAmount <= 1)
+        {
+            moveAmount = 1;
         }
     }
 
