@@ -942,7 +942,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 841159889}
   m_CullTransparentMesh: 1
---- !u!1001 &949370517
+--- !u!1001 &1148584963
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -953,10 +953,6 @@ PrefabInstance:
     - target: {fileID: 1759327822651878540, guid: 53e7a9478c931bd4e843ddd1e677f22b, type: 3}
       propertyPath: m_Name
       value: Player Camera (Left and Right)
-      objectReference: {fileID: 0}
-    - target: {fileID: 3898439354209584673, guid: 53e7a9478c931bd4e843ddd1e677f22b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5029699927667993585, guid: 53e7a9478c931bd4e843ddd1e677f22b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -999,16 +995,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6956436180989716213, guid: 53e7a9478c931bd4e843ddd1e677f22b, type: 3}
-      propertyPath: upAndDownrotationSpeed
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 6956436180989716213, guid: 53e7a9478c931bd4e843ddd1e677f22b, type: 3}
       propertyPath: collideWithLayers.m_Bits
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6956436180989716213, guid: 53e7a9478c931bd4e843ddd1e677f22b, type: 3}
-      propertyPath: leftAndRightRotationSpeed
-      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1696,4 +1684,4 @@ SceneRoots:
   - {fileID: 8494867078274231326}
   - {fileID: 6023387724635276442}
   - {fileID: 7244532734481002605}
-  - {fileID: 949370517}
+  - {fileID: 1148584963}
