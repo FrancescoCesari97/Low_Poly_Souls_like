@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerInputManager : MonoBehaviour
 {
-    public static PlayerInputManager Instance;
+    public static PlayerInputManager instance;
 
    //  1. find a way to read the values of a joystick
    //  2. move the character based of those values
@@ -25,9 +25,9 @@ public class PlayerInputManager : MonoBehaviour
     private void Awake()
     {
 
-        if (Instance == null)
+        if (instance == null)
         {
-            Instance = this;
+            instance = this;
         }
         else 
         {
@@ -44,7 +44,7 @@ public class PlayerInputManager : MonoBehaviour
         // When the scene changes, run this logic
         SceneManager.activeSceneChanged += OnSceneChange;
 
-        Instance.enabled = false;
+        instance.enabled = false;
 
     }
 
@@ -53,11 +53,11 @@ public class PlayerInputManager : MonoBehaviour
         // If we are loading into our world scene enble our player controls
         if (newScene.buildIndex == WorldSaveGameManager.instance.GetWorldSceneIndex())
         {
-            Instance.enabled = true;
+            instance.enabled = true;
         }
         else 
         {
-            Instance.enabled = false;
+            instance.enabled = false;
         }
     }
 
@@ -127,18 +127,6 @@ public class PlayerInputManager : MonoBehaviour
         cameraVerticalInput = cameraInput.y;
         cameraHorizontalInput = cameraInput.x;
 
-        // Return the absolute number
-        moveAmount = Mathf.Clamp01(Mathf.Abs(verticalInput) + Mathf.Abs(horizontalInput));
-
-        // Clamp the value to 0, 0.5, 1
-        if (moveAmount <= 0.5 && moveAmount > 0)
-        {
-            moveAmount = 0.5f;
-        }
-        else if (moveAmount > 0.5 && moveAmount <= 1)
-        {
-            moveAmount = 1;
-        }
     }
 
 }

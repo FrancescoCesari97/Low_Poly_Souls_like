@@ -33,8 +33,8 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
 
     private void GetVerticalAndHorizontalInputs() 
     {
-        verticalMovement = PlayerInputManager.Instance.verticalInput;
-        horizontalMovement = PlayerInputManager.Instance.horizontalInput;
+        verticalMovement = PlayerInputManager.instance.verticalInput;
+        horizontalMovement = PlayerInputManager.instance.horizontalInput;
     }
 
     private void HandleGroundedMovement() 
@@ -54,12 +54,12 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
 
 
 
-        if (PlayerInputManager.Instance.moveAmount > 0.5f)
+        if (PlayerInputManager.instance.moveAmount > 0.5f)
             // Running speed
         {
             player.characterController.Move(moveDirection * runningSpeed * Time.deltaTime);
         }
-        else if (PlayerInputManager.Instance.moveAmount <= 0.5f)
+        else if (PlayerInputManager.instance.moveAmount <= 0.5f)
             // Walking speed
         {
             player.characterController.Move(moveDirection * walkingSpeed * Time.deltaTime);
