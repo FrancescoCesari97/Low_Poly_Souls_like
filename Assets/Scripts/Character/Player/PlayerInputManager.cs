@@ -5,6 +5,8 @@ public class PlayerInputManager : MonoBehaviour
 {
     public static PlayerInputManager instance;
 
+    public PlayerManager player;
+
    //  1. find a way to read the values of a joystick
    //  2. move the character based of those values
 
@@ -46,6 +48,8 @@ public class PlayerInputManager : MonoBehaviour
 
         instance.enabled = false;
 
+        FindPlayerInScene();
+
     }
 
     private void OnSceneChange(Scene oldScene, Scene newScene)
@@ -58,6 +62,17 @@ public class PlayerInputManager : MonoBehaviour
         else 
         {
             instance.enabled = false;
+        }
+    }
+
+    private void FindPlayerInScene()
+    {
+        // Find the player in the new scene
+        player = Object.FindFirstObjectByType<PlayerManager>();
+
+        if (player == null)
+        {
+            Debug.LogWarning("Player not found in scene!");
         }
     }
 
@@ -120,6 +135,13 @@ public class PlayerInputManager : MonoBehaviour
         {
             moveAmount = 1; 
         }
+        if (player == null)
+            return;
+
+        // 0 on the horizontal parameter because we get only NON-STRAFING movement
+        player.playerAnimatorManager.UpdateAnimatorMovementParameters(0, moveAmount);
+
+        // 
     }
 
     private void HandleCameraMovementInput()
