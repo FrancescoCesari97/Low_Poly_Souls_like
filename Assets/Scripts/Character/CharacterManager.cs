@@ -3,11 +3,11 @@ using Unity.Netcode;
 
 public class CharacterManager : NetworkBehaviour
 {
-    public CharacterController characterController;
+    [HideInInspector] public CharacterController characterController;
 
-    [HideInInspector]  public Animator animator;
+    [HideInInspector] public Animator animator;
 
-    CharacterNetworkManager characterNetworkManager;
+    [HideInInspector] public CharacterNetworkManager characterNetworkManager;
     protected virtual void Awake()
     {
         DontDestroyOnLoad(this);  
