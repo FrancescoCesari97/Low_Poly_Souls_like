@@ -8,6 +8,9 @@ public class CharacterManager : NetworkBehaviour
     [HideInInspector] public Animator animator;
 
     [HideInInspector] public CharacterNetworkManager characterNetworkManager;
+
+    [Header("Flags")]
+    public bool isPerformingAction = false;
     protected virtual void Awake()
     {
         DontDestroyOnLoad(this);  

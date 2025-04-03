@@ -18,11 +18,14 @@ public class PlayerInputManager : MonoBehaviour
     public float horizontalInput;
     public float moveAmount;
 
-    [Header("Camera movement Input")]
+    [Header("Camera Movement Input")]
     [SerializeField] Vector2 cameraInput;
     public float cameraVerticalInput;
     public float cameraHorizontalInput;
     public float cameraMoveAmount;
+
+    [Header("Player Action Input")]
+    [SerializeField] bool dodgeInput = false;
 
     private void Awake()
     {
@@ -84,6 +87,7 @@ public class PlayerInputManager : MonoBehaviour
 
             playerControls.PlayerMovement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
             playerControls.PlayerCamera.Movement.performed += i => cameraInput = i.ReadValue<Vector2>();
+            playerControls.PlayerActions.Dodge.performed += i => dodgeInput = true;
         }
 
         playerControls.Enable();
@@ -149,6 +153,16 @@ public class PlayerInputManager : MonoBehaviour
         cameraVerticalInput = cameraInput.y;
         cameraHorizontalInput = cameraInput.x;
 
+    }
+
+    private void HandleDodgeInput() 
+    {
+        if(dodgeInput == true) 
+        {
+            dodgeInput = false;
+
+            // perform dodge 
+        }
     }
 
 }

@@ -10,12 +10,16 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
     public float verticalmovement;
     public float moveAmount;
 
+
+    [Header("Movement Setting")]
     private Vector3 moveDirection;
     private Vector3 targetRotationDirection;
-
     [SerializeField] float walkingSpeed = 2;
     [SerializeField] float runningSpeed = 5;
     [SerializeField] float rotationSpeed = 10;
+
+    [Header ("Dodge")]
+    private Vector3 rollDirection;
 
     protected override void Awake()
     {
@@ -121,5 +125,31 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         Quaternion targetRotation = Quaternion.Slerp(transform.rotation, newRotation, rotationSpeed * Time.deltaTime);
 
         transform.rotation = targetRotation;
+    }
+
+    public void AttemptToPerformDodge()
+    {
+        // if moving perform a roll 
+        if (PlayerInputManager.instance.moveAmount > 0) 
+        {
+        
+            rollDirection = PlayerCamera.instance.cameraObject.transform.forward * PlayerInputManager.instance.verticalInput;
+            rollDirection += PlayerCamera.instance.cameraObject.transform.forward * PlayerInputManager.instance.horizontalInput;
+
+            rollDirection.y = 0;
+            rollDirection.Normalize();
+
+            Quaternion playerRotation = Quaternion.LookRotation(rollDirection);
+            player.transform.rotation = playerRotation;
+
+            // perform a roll animation
+            player.playerAnimatorManager.PlayTargetActionAnimation("Roll_Foward_01", true);
+        }
+
+        // if stationary perform a step back
+        else 
+        {
+            // perform a backstep animation
+        }
     }
 }

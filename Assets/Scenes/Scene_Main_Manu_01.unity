@@ -995,8 +995,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6956436180989716213, guid: 53e7a9478c931bd4e843ddd1e677f22b, type: 3}
+      propertyPath: upAndDownrotationSpeed
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6956436180989716213, guid: 53e7a9478c931bd4e843ddd1e677f22b, type: 3}
       propertyPath: collideWithLayers.m_Bits
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6956436180989716213, guid: 53e7a9478c931bd4e843ddd1e677f22b, type: 3}
+      propertyPath: leftAndRightRotationSpeed
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
