@@ -139,13 +139,14 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
             rollDirection.y = 0;
             rollDirection.Normalize();
 
+            // find the rotation of the player
             Quaternion playerRotation = Quaternion.LookRotation(rollDirection);
+            // applay the new rotation to the player
             player.transform.rotation = playerRotation;
 
             // perform a roll animation
-            player.playerAnimatorManager.PlayTargetActionAnimation("Roll_Foward_01", true);
+            player.playerAnimatorManager.PlayTargetActionAnimation("Roll_Foward", true, true);
         }
-
         // if stationary perform a step back
         else 
         {

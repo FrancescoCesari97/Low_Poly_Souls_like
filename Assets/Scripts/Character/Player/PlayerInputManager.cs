@@ -118,10 +118,20 @@ public class PlayerInputManager : MonoBehaviour
 
     private void Update()
     {
-        HandlePlayerMovementInput();
-        HandleCameraMovementInput();
+        HandleAllInputs();
     }
 
+    private void HandleAllInputs() 
+    {
+        HandlePlayerMovementInput();
+        HandleCameraMovementInput();
+        HandleDodgeInput();
+    }
+
+
+    // MOVEMENTS
+   
+   
     private void HandlePlayerMovementInput() 
     {
         verticalInput = movementInput.y;
@@ -155,6 +165,8 @@ public class PlayerInputManager : MonoBehaviour
 
     }
 
+    // ACTIONS
+
     private void HandleDodgeInput() 
     {
         if(dodgeInput == true) 
@@ -162,6 +174,7 @@ public class PlayerInputManager : MonoBehaviour
             dodgeInput = false;
 
             // perform dodge 
+            player.playerLocomotionManager.AttemptToPerformDodge();
         }
     }
 

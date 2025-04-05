@@ -27,5 +27,6 @@ public class CharacterAnimatorManager : MonoBehaviour
         // for example, if you get damaged, and begin perfoming a damage animation
         // check this condition before attempting new actions
         character.isPerformingAction = isPerformingAction;
+
     }
 }
