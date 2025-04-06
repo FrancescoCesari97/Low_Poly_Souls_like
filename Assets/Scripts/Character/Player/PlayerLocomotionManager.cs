@@ -69,7 +69,11 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
 
     private void HandleGroundedMovement() 
     {
+        if (!player.canMove)
+            return;
+
         GetMovementValues();
+
 
         // Get Forward Movement Direction
         moveDirection = PlayerCamera.instance.transform.forward * verticalMovement;
@@ -101,6 +105,8 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
 
     private void HandleRotation() 
     {
+        if (!player.canRotate)
+            return;
         targetRotationDirection = Vector3.zero;
         // The player's forward movement (W/S) is determined by the camera’s forward direction (transform.forward)
         targetRotationDirection = PlayerCamera.instance.cameraObject.transform.forward * verticalMovement;
@@ -137,7 +143,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         {
         
             rollDirection = PlayerCamera.instance.cameraObject.transform.forward * PlayerInputManager.instance.verticalInput;
-            rollDirection += PlayerCamera.instance.cameraObject.transform.forward * PlayerInputManager.instance.horizontalInput;
+            rollDirection += PlayerCamera.instance.cameraObject.transform.right * PlayerInputManager.instance.horizontalInput;
 
             rollDirection.y = 0;
             rollDirection.Normalize();
@@ -148,7 +154,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
             player.transform.rotation = playerRotation;
 
             // perform a roll animation
-            player.playerAnimatorManager.PlayTargetActionAnimation("Roll_Foward", true, true);
+            player.playerAnimatorManager.PlayTargetActionAnimation("Quick Roll To Run", true, true);
         }
         // if stationary perform a step back
         else 

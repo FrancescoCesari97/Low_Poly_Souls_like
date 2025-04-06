@@ -11,6 +11,8 @@ public class CharacterManager : NetworkBehaviour
 
     [Header("Flags")]
     public bool isPerformingAction = false;
+    public bool canRotate = true;
+    public bool canMove = true;
     protected virtual void Awake()
     {
         DontDestroyOnLoad(this);  

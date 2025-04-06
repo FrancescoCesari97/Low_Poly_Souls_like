@@ -13,6 +13,8 @@ public class ResetActionFalg : StateMachineBehaviour
         }
         // this is called when an action ends, and the state returns to "EMPTY"
         character.isPerformingAction = false;
+        character.canRotate = true;
+        character.canMove = true;
     }   
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
