@@ -160,6 +160,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         else 
         {
             // perform a backstep animation
+            player.playerAnimatorManager.PlayTargetActionAnimation("Dodging Back", true, true);
         }
     }
 }

@@ -77,6 +77,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8f55532e13863e74197a40f095d83a8a, type: 3}
       insertIndex: -1
       addedObject: {fileID: -1782446475316865791}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8f55532e13863e74197a40f095d83a8a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7761739070106748691}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8f55532e13863e74197a40f095d83a8a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1243567335269119005}
   m_SourcePrefab: {fileID: 100100000, guid: 8f55532e13863e74197a40f095d83a8a, type: 3}
 --- !u!1 &7821251607741691168 stripped
 GameObject:
@@ -147,6 +153,9 @@ MonoBehaviour:
   animator: {fileID: 0}
   characterNetworkManager: {fileID: 0}
   isPerformingAction: 0
+  applyRootMotion: 0
+  canRotate: 1
+  canMove: 1
   playerAnimatorManager: {fileID: 0}
   playerLocomotionManager: {fileID: 0}
 --- !u!114 &5064751278123077483
@@ -231,3 +240,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 343f2566f48605b4db223809fdca936f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7761739070106748691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7821251607741691168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fff0960ef4ea6e04eac66b4a7fd2189d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RigLayers:
+  - m_Rig: {fileID: 0}
+    m_Active: 1
+  m_Effectors: []
+--- !u!114 &1243567335269119005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7821251607741691168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2d8418b0b9634b1892b0268dd9c2743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boneShape: 1
+  drawBones: 1
+  drawTripods: 0
+  boneSize: 1
+  tripodSize: 1
+  boneColor: {r: 0, g: 0, b: 1, a: 0.5}
+  m_Transforms: []
