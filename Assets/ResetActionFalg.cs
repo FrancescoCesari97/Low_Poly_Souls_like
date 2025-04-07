@@ -13,6 +13,7 @@ public class ResetActionFalg : StateMachineBehaviour
         }
         // this is called when an action ends, and the state returns to "EMPTY"
         character.isPerformingAction = false;
+        character.applyRootMotion = false;
         character.canRotate = true;
         character.canMove = true;
     }   

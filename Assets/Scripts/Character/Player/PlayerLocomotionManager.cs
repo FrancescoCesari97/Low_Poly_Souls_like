@@ -154,7 +154,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
             player.transform.rotation = playerRotation;
 
             // perform a roll animation
-            player.playerAnimatorManager.PlayTargetActionAnimation("Quick Roll To Run", true, true);
+            player.playerAnimatorManager.PlayTargetActionAnimation("Roll_Foward_1", true, true);
         }
         // if stationary perform a step back
         else 

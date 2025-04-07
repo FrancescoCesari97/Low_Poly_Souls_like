@@ -21,11 +21,11 @@ public class CharacterAnimatorManager : MonoBehaviour
     public virtual void PlayTargetActionAnimation(
         string targetAnimation,
         bool isPerformingAction,
-        bool applayRootMotion = true,
+        bool applyRootMotion = true,
         bool canRotate = false,
         bool canMove = false) 
     {
-        character.animator.applyRootMotion = applayRootMotion;
+        character.applyRootMotion = applyRootMotion;
         character.animator.CrossFade(targetAnimation, 0.2f);
 
         // Stop character from attempting new actions
