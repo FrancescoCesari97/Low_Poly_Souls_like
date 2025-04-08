@@ -1,5 +1,6 @@
 using JetBrains.Annotations;
 using UnityEngine;
+using Unity.Netcode;
 
 public class CharacterAnimatorManager : MonoBehaviour
 {
@@ -35,5 +36,8 @@ public class CharacterAnimatorManager : MonoBehaviour
         character.canRotate = canRotate;
         character.canMove = canMove;
 
+
+        // Tell the server/host we played an animation, and to play taht animation for everybody else present
+        character.characterNetworkManager.NotyfyTheServerOfActionAniamtionServerRpc(NetworkManager.Singleton.LocalClientId, targetAnimation, applyRootMotion);
     }
 }
