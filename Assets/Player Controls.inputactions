@@ -9,9 +9,9 @@
                     "name": "Movement",
                     "type": "PassThrough",
                     "id": "6a310be1-4550-43b0-a085-ecb79850ad2e",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Hold",
                     "initialStateCheck": false
                 }
             ],
@@ -19,7 +19,7 @@
                 {
                     "name": "",
                     "id": "f89ff8c5-c49d-4a3f-a3a1-c14613375734",
-                    "path": "",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -289,13 +289,22 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Sprint",
+                    "type": "Button",
+                    "id": "7f2afb5c-1a2e-486d-a25a-565104a25e4b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "",
-                    "id": "94bec577-567c-4a7f-a7e7-cab79de2d315",
-                    "path": "<Gamepad>/buttonEast",
+                    "id": "f2a5c149-3999-4ef9-9981-76bf7c0f2fc8",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -305,12 +314,23 @@
                 },
                 {
                     "name": "",
-                    "id": "f2a5c149-3999-4ef9-9981-76bf7c0f2fc8",
-                    "path": "<Keyboard>/space",
+                    "id": "91e17691-8bac-47bf-b9c7-46bbe57334bc",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Dodge",
+                    "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ea9e0137-4925-43d2-b681-c43770bf4fae",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sprint",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

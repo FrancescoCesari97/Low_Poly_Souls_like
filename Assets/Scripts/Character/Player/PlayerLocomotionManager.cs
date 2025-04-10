@@ -163,4 +163,20 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
             player.playerAnimatorManager.PlayTargetActionAnimation("Standing Dodge Backward", true, true);
         }
     }
+
+    public void HandleSprinting() 
+    {
+        if (player.isPerformingAction) 
+        {
+            // set sprinting to flase
+
+        }
+
+        // If we are out of stamina, set sprinting to false
+
+
+        // If we are moving set sprinting to true
+        // If we are stationary set sprinting to flase 
+
+    }
 }
