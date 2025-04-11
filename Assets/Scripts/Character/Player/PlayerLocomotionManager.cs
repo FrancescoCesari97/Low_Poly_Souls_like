@@ -16,6 +16,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
     private Vector3 targetRotationDirection;
     [SerializeField] float walkingSpeed = 2;
     [SerializeField] float runningSpeed = 5;
+    [SerializeField] float sprintingSpeed = 15;
     [SerializeField] float rotationSpeed = 10;
 
     [Header ("Dodge")]
@@ -45,7 +46,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
             moveAmount = player.characterNetworkManager.moveAmount.Value;
 
             // if not lock on pass only the move amount
-            player.playerAnimatorManager.UpdateAnimatorMovementParameters(0, moveAmount);
+            player.playerAnimatorManager.UpdateAnimatorMovementParameters(0, moveAmount, player.playerNetworkManager.isSprinting.Value);
 
 
 
@@ -87,17 +88,28 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         moveDirection.y = 0;
 
 
+        if (player.playerNetworkManager.isSprinting.Value)
+        {
+            player.characterController.Move(moveDirection * sprintingSpeed * Time.deltaTime);
+        }
+        else 
+        {
 
-        if (PlayerInputManager.instance.moveAmount > 0.5f)
-            // Running speed
-        {
-            player.characterController.Move(moveDirection * runningSpeed * Time.deltaTime);
+            if (PlayerInputManager.instance.moveAmount > 0.5f)
+                // Running speed
+            {
+                player.characterController.Move(moveDirection * runningSpeed * Time.deltaTime);
+            }
+            else if (PlayerInputManager.instance.moveAmount <= 0.5f)
+                // Walking speed
+            {
+                player.characterController.Move(moveDirection * walkingSpeed * Time.deltaTime);
+            }
+        
         }
-        else if (PlayerInputManager.instance.moveAmount <= 0.5f)
-            // Walking speed
-        {
-            player.characterController.Move(moveDirection * walkingSpeed * Time.deltaTime);
-        }
+
+
+
 
 
     }
@@ -133,6 +145,33 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         transform.rotation = targetRotation;
     }
 
+    public void HandleSprinting() 
+    {
+        if (player.isPerformingAction) 
+        {
+            // set sprinting to flase
+
+            player.playerNetworkManager.isSprinting.Value = false;
+
+        }
+
+        // If we are out of stamina, set sprinting to false
+
+
+
+        // If we are moving set sprinting to true
+        if (moveAmount >= 0.5)
+        {
+            player.playerNetworkManager.isSprinting.Value = true;
+        }
+        // If we are stationary set sprinting to flase 
+        else
+        {
+            player.playerNetworkManager.isSprinting.Value = false;
+        }
+
+    }
+
     public void AttemptToPerformDodge()
     {
         if (player.isPerformingAction)
@@ -164,19 +203,4 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         }
     }
 
-    public void HandleSprinting() 
-    {
-        if (player.isPerformingAction) 
-        {
-            // set sprinting to flase
-
-        }
-
-        // If we are out of stamina, set sprinting to false
-
-
-        // If we are moving set sprinting to true
-        // If we are stationary set sprinting to flase 
-
-    }
 }

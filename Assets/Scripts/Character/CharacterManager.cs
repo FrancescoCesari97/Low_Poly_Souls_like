@@ -1,5 +1,7 @@
 using UnityEngine;
 using Unity.Netcode;
+using System.Globalization;
+using UnityEngine.UIElements;
 
 public class CharacterManager : NetworkBehaviour
 {
@@ -56,3 +58,8 @@ public class CharacterManager : NetworkBehaviour
     
     }
 }
+
+
+
+
+

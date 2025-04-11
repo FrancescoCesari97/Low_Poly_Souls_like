@@ -160,7 +160,7 @@ public class PlayerInputManager : MonoBehaviour
             return;
 
         // 0 on the horizontal parameter because we get only NON-STRAFING movement
-        player.playerAnimatorManager.UpdateAnimatorMovementParameters(0, moveAmount);
+        player.playerAnimatorManager.UpdateAnimatorMovementParameters(0, moveAmount, player.playerNetworkManager.isSprinting.Value);
 
         // 
     }
@@ -188,10 +188,14 @@ public class PlayerInputManager : MonoBehaviour
 
     private void HandleSprinting()
     {
-        if (sprintInput) 
+        if (sprintInput)
         {
             // Handle Sprinting
             player.playerLocomotionManager.HandleSprinting();
+        }
+        else 
+        {
+            player.playerNetworkManager.isSprinting.Value = false;
         }
     }
 
