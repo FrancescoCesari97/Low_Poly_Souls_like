@@ -126,7 +126,7 @@ public class PlayerCamera : MonoBehaviour
             targetCameraZPosiotion = -cameraCollisionRadius;
         }
 
-        cameraObjectPosition.z = Mathf.Lerp(cameraObject.transform.localPosition.z, targetCameraZPosiotion, 0.2f);  // Smoothly interpolates (Lerp) the camera's position toward the new valid position to avoid sudden snapping.
+        cameraObjectPosition.z = Mathf.Lerp(cameraObject.transform.localPosition.z, targetCameraZPosiotion, 0f);  // Smoothly interpolates (Lerp) the camera's position toward the new valid position to avoid sudden snapping.
         cameraObject.transform.localPosition = cameraObjectPosition;   // Updates the camera's local position to prevent clipping.
     }
 }

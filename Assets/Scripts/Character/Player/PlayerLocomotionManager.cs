@@ -18,6 +18,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
     [SerializeField] float runningSpeed = 5;
     [SerializeField] float sprintingSpeed = 15;
     [SerializeField] float rotationSpeed = 10;
+    [SerializeField] float sprintingStaminaCost = 1;
 
     [Header ("Dodge")]
     private Vector3 rollDirection;
@@ -156,7 +157,11 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         }
 
         // If we are out of stamina, set sprinting to false
+        if (player.playerNetworkManager.currentStamina.Value <= 0) 
+        {
+            player.playerNetworkManager.isSprinting.Value = false;
 
+        }
 
 
         // If we are moving set sprinting to true
@@ -168,6 +173,11 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         else
         {
             player.playerNetworkManager.isSprinting.Value = false;
+        }
+
+        if (player.playerNetworkManager.isSprinting.Value) 
+        {
+            player.playerNetworkManager.currentStamina.Value -= sprintingStaminaCost * Time.deltaTime;
         }
 
     }
