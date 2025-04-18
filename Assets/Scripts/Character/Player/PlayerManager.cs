@@ -8,6 +8,8 @@ public class PlayerManager : CharacterManager
     [HideInInspector] public PlayerLocomotionManager playerLocomotionManager;
     [HideInInspector] public PlayerNetworkManager playerNetworkManager;
     [HideInInspector] public PlayerStatsManager playerStatsManager;
+
+
     protected override void Awake()
     {
         base.Awake();
@@ -29,6 +31,9 @@ public class PlayerManager : CharacterManager
         // Handle movement
         playerLocomotionManager.HandleAllMovement();
 
+        // handle stamina regeneration
+        playerStatsManager.RegenerateStamina();
+
     }
 
     protected override void LateUpdate()
@@ -39,6 +44,8 @@ public class PlayerManager : CharacterManager
         base.LateUpdate();
 
         PlayerCamera.instance.HandleAllCameraActions();
+
+       
     }
 
     public override void OnNetworkSpawn()
@@ -52,6 +59,7 @@ public class PlayerManager : CharacterManager
             PlayerInputManager.instance.player = this;
 
             playerNetworkManager.currentStamina.OnValueChanged += PlayerUIManager.instance.playerUIHudManager.SetNewStaminaValue;
+            playerNetworkManager.currentStamina.OnValueChanged += playerStatsManager.ResetStaminaRegenTimer;
 
             // maxStamina will be moved when saving and loading is added
             playerNetworkManager.maxStamina.Value = playerStatsManager.CalculateStaminaBasedOnEndurancelevel(playerNetworkManager.endurance.Value);
